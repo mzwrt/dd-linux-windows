@@ -138,6 +138,36 @@ certutil -urlcache -f -split https://cnb.cool/bin456789/reinstall/-/git/raw/main
 - on Windows, first run `cmd`, then run `.\reinstall.bat ...`
   - If the link in the parameter contains special characters, it should be enclosed in `""`, not `''`.
 
+### Azure Usage Notes
+
+> [!NOTE]
+>
+> **Running the script manually on Azure (Linux VM)**
+>
+> Connect to your Azure Linux VM via SSH, then run:
+>
+> ```bash
+> curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh
+> bash reinstall.sh ...
+> ```
+>
+> **Running the script manually on Azure (Windows VM)**
+>
+> Connect to your Azure Windows VM via Remote Desktop (RDP), open `cmd` **as Administrator**, then run:
+>
+> ```batch
+> certutil -urlcache -f -split https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.bat
+> reinstall.bat ...
+> ```
+>
+> **Monitoring installation progress (Azure Serial Console)**
+>
+> Azure does not provide a VNC console, but offers the **Azure Serial Console** to monitor progress during installation:
+>
+> In the [Azure portal](https://portal.azure.com), navigate to: **Virtual machine → Serial console**
+>
+> For more details, see [Azure Serial Console documentation](https://learn.microsoft.com/azure/virtual-machines/serial-console-overview).
+
 ### Feature 1: Install <img width="16" height="16" src="https://www.kernel.org/theme/images/logos/favicon.png" /> Linux
 
 > [!CAUTION]
@@ -187,7 +217,7 @@ bash reinstall.sh anolis      7|8|23
 
 > [!TIP]
 >
-> Can monitor the progress through various methods (SSH, HTTP 80 port, VNC from server provider, serial console).
+> Can monitor the progress through various methods (SSH, HTTP 80 port, VNC from server provider, serial console). Azure users can use the [Azure Serial Console](https://learn.microsoft.com/azure/virtual-machines/serial-console-overview).
 >
 > Even if errors occur during the installation process, SSH is available for manual recovery.
 >
@@ -272,7 +302,7 @@ bash reinstall.sh dd --img "https://example.com/xxx.xz"
 
 > [!TIP]
 >
-> Can monitor the progress through various methods (SSH, HTTP 80 port, VNC from server provider, serial console).
+> Can monitor the progress through various methods (SSH, HTTP 80 port, VNC from server provider, serial console). Azure users can use the [Azure Serial Console](https://learn.microsoft.com/azure/virtual-machines/serial-console-overview).
 >
 > Even if errors occur during the installation process, SSH is available for manual recovery.
 >

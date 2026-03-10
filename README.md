@@ -133,6 +133,36 @@ certutil -urlcache -f -split https://cnb.cool/bin456789/reinstall/-/git/raw/main
 - Windows 下先运行 `cmd`，再运行 `reinstall.bat ...`
   - 如果参数中的链接包含特殊字符，要用 `""` 将链接包裹起来，不能用 `''`
 
+### Azure 使用说明
+
+> [!NOTE]
+>
+> **在 Azure 上手动运行脚本（Linux 虚拟机）**
+>
+> 通过 SSH 连接到 Azure Linux 虚拟机，然后运行：
+>
+> ```bash
+> curl -O https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.sh
+> bash reinstall.sh ...
+> ```
+>
+> **在 Azure 上手动运行脚本（Windows 虚拟机）**
+>
+> 通过远程桌面（RDP）连接到 Azure Windows 虚拟机，以**管理员身份**打开 `cmd`，然后运行：
+>
+> ```batch
+> certutil -urlcache -f -split https://raw.githubusercontent.com/bin456789/reinstall/main/reinstall.bat
+> reinstall.bat ...
+> ```
+>
+> **监控安装进度（Azure 串行控制台）**
+>
+> Azure 不提供 VNC 控制台，但提供 **Azure 串行控制台**，可在安装过程中查看进度：
+>
+> 在 [Azure 门户](https://portal.azure.com) 中，依次前往：**虚拟机 → 串行控制台**
+>
+> 详细说明参见 [Azure 串行控制台文档](https://learn.microsoft.com/azure/virtual-machines/serial-console-overview)。
+
 ### 功能 1: 安装 <img width="16" height="16" src="https://www.kernel.org/theme/images/logos/favicon.png" /> Linux
 
 > [!CAUTION]
@@ -182,7 +212,7 @@ bash reinstall.sh anolis      7|8|23
 
 > [!TIP]
 >
-> 可通过多种方式（SSH、HTTP 80 端口、商家后台 VNC、串行控制台）查看安装进度。
+> 可通过多种方式（SSH、HTTP 80 端口、商家后台 VNC、串行控制台）查看安装进度。Azure 用户可使用 [Azure 串行控制台](https://learn.microsoft.com/azure/virtual-machines/serial-console-overview)。
 >
 > 即使安装过程出错，也能连接 SSH 手动救砖。
 >
@@ -267,7 +297,7 @@ bash reinstall.sh dd --img "https://example.com/xxx.xz"
 
 > [!TIP]
 >
-> 可通过多种方式（SSH、HTTP 80 端口、商家后台 VNC、串行控制台）查看安装进度。
+> 可通过多种方式（SSH、HTTP 80 端口、商家后台 VNC、串行控制台）查看安装进度。Azure 用户可使用 [Azure 串行控制台](https://learn.microsoft.com/azure/virtual-machines/serial-console-overview)。
 >
 > 即使安装过程出错，也能连接 SSH 手动救砖
 >
